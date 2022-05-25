@@ -1,5 +1,5 @@
 # OOP school library: Set up associations
-In this project, I have to finished creating the remaining classes for my school library and created the associations between them.
+In this project, I finished creating the remaining classes for my school library and created the associations between them.
 
 ## Built With
 - Ruby
