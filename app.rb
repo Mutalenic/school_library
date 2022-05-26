@@ -82,12 +82,34 @@ class App
     author = gets.chomp
 
     if title.strip != '' && author.strip != ''
-        book = Book.new(title, author)
-        @books.push(book)
-        puts "Book created successfully"
+      book = Book.new(title, author)
+      @books.push(book)
+      puts 'Book created successfully'
     else
-        puts "Enter a valid title and author"
+      puts 'Enter a valid title and author'
     end
-end
+  end
 
+  def create_rental
+    if @books.empty? && @people.empty?
+      puts 'No books and people in the library'
+    else
+      puts 'Select a book:'
+      @books.each_with_index do |book, index|
+        puts "#{index + 1}) Title: \"#{book.title}\"|Author: by #{book.author}"
+      end
+      number = gets.chomp.to_i
+      index = number - 1
+
+      puts 'Type your ID:'
+      @people.each { |person| puts "[#{person.class}] Name: #{person.name}|Age: #{person.age} | ID: #{person.id}" }
+      id = gets.chomp.to_i
+      individual = @people.find { |person| person.id == id }.first
+
+      print 'Date:'
+      date = gets.chomp
+      @books[index].rentals.push(Rental.new(date, @books[index], individual))
+      puts 'Rental created'
+    end
+  end
 end
