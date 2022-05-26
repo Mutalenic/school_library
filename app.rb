@@ -32,19 +32,42 @@ class App
 
     def create_person
        print 'Do you want to create a student(1) or a teacher (2)?[Input a number]:'
-        option = gets.chomp.to_i
-        
+        option = gets.chomp
+        print 'Name:'
+        name = gets.chomp
+        print 'Age:'
+        age = gets.chomp.to_i       
         case option
         when 1
-            create_student
+            print 'Class:'
+            person = gets.chomp
+            create_student(name, age, person)
         when 2
-            create_teacher
+            print 'specialization:'
+            grade = gets.chomp
+            create_teacher(name, age, grade)
         else
             puts "Invalid input"
-            
         end
         puts "Person created"
     end
+
+    def create_student(name, age, grade)
+        print 'Parent permision?[Y/N]:'
+        option = gets.chomp.downcase
+        if option == 'y'
+            student = Student.new(age, name, parent_pernission: true)
+        else
+            student = Student.new(age, name, parent_permission: false)
+            else
+                puts "Invalid input"
+                return
+            end
+            @people.push(student)
+            puts "Student created"
+        end
+    end
+    
 end
 
 
