@@ -74,4 +74,20 @@ class App
     @people.push(teacher)
     puts "Teacher created ID: #{teacher.id}"
   end
+
+  def create_book
+    print 'Title:'
+    title = gets.chomp
+    print 'Author:'
+    author = gets.chomp
+
+    if title.strip != '' && author.strip != ''
+        book = Book.new(title, author)
+        @books.push(book)
+        puts "Book created successfully"
+    else
+        puts "Enter a valid title and author"
+    end
+end
+
 end
