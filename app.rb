@@ -112,4 +112,21 @@ class App
       puts 'Rental created'
     end
   end
+
+  def list_all_rentals
+    puts 'No rentals in the library' if @rentals.empty?
+    print 'To view your rentals, type your ID:'
+    id = gets.chomp.to_i
+    rental = @rentals.find { |rent| rent.person.id == id }
+    if rental.empty?
+      puts 'No rentals found'
+    else
+      puts 'Here are your rentals:'
+      rental.each_with_index do |record, index|
+        puts "#{index + 1}|Date: #{record.date}|
+                  Borrowerred by: #{record.person.name}| Status: #{record.person.class} |
+                  Book: #{record.book.title}\" by #{record.book.author}"
+      end
+    end
+  end
 end
