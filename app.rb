@@ -1,5 +1,9 @@
 require_relative './book_class.rb'
 require_relative './person_class.rb'
+require_relative './student_class.rb'
+require_relative './teacher_class.rb'
+require_relative './classroom_class.rb'
+require_relative './rental_class.rb'
 
 class App
     def initialize
@@ -27,13 +31,19 @@ class App
     end
 
     def create_person
-       print 'Do you want to create a student(1) or a teacher (2)?'
-       selection = gets.chomp
-            print 'Enter name:'
-            name = gets.chomp
-            print 'Enter age:'
-            age = gets.chomp         
+       print 'Do you want to create a student(1) or a teacher (2)?[Input a number]:'
+        option = gets.chomp.to_i
+        
+        case option
+        when 1
+            create_student
+        when 2
+            create_teacher
+        else
+            puts "Invalid input"
+            
         end
+        puts "Person created"
     end
 end
 
