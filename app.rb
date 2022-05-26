@@ -64,10 +64,10 @@ class App
                 return
             end
             @people.push(student)
-            puts "Student created"
+            puts "Student created ID: #{student.id}"
         end
     end
-    
+
 end
 
 
