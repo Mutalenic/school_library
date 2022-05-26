@@ -1,5 +1,5 @@
-# OOP school library: Set up associations
-In this project, I finished creating the remaining classes for my school library and created the associations between them.
+# OOP school library: Add basic UI
+In this project, I have created a form of UI for my school library app. This way it can be invoked as an executable.
 
 ## Built With
 - Ruby
