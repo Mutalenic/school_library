@@ -130,16 +130,13 @@ class App
     print 'To view your rentals, type your ID:'
     id = gets.chomp.to_i
 
-    rental = @rentals.find { |rent| rent.person.id == id }
-    data = []
-    if rental
-      data.push(rental.date.to_s)
-      data.push(rental.person.name.to_s)
-      data.push(rental.book.title.to_s)
-      data.push(rental.book.author.to_s)
-      puts data.join("\n")
-    else
+    rented = @rentals.filter { |rental| rental.person.id == id }
+    if rented.empty?
       puts 'No rentals found'
+    else
+      rented.each do |rental|
+        puts "Rental date: #{rental.date}|Book: #{rental.book.title}|Person: #{rental.person.name}"
+      end
     end
   end
 end
