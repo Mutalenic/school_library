@@ -109,11 +109,9 @@ class App
       index = number - 1
 
       puts 'Select a person from the following list by number (not id):'
-      @people.each_with_index do |person, index|
-       puts "#{index + 1}) Name: #{person.name}|Age: #{person.age} | ID: #{person.id}" 
+      @people.each_with_index do |person, i|
+        puts "#{i + 1}) [#{person.class.name}] Name: #{person.name}|Age: #{person.age} |ID: #{person.id}"
       end
-      personNumber = gets.chomp.to_i
-      # personIndex = personNumber - 1
       print 'Enter the date [dd/mm/yyyy]:'
       date = gets.chomp
       rental = Rental.new(date, @people[index], @books[index])
@@ -130,15 +128,16 @@ class App
     print 'To view your rentals, type your ID:'
     id = gets.chomp.to_i
 
-  
     rental = @rentals.find { |rent| rent.person.id == id }
     data = []
-    data.push("#{rental.person.name}'s rentals:")
-    data.push("Date: #{rental.date}")
-    data.push("Book: #{rental.book.title}")
-    data.push("Author: #{rental.book.author}")
-    data.each do |line|
-      puts line
+    if rental
+      data.push(rental.date.to_s)
+      data.push(rental.person.name.to_s)
+      data.push(rental.book.title.to_s)
+      data.push(rental.book.author.to_s)
+      puts data.join("\n")
+    else
+      puts 'No rentals found'
     end
-  end  
+  end
 end
