@@ -112,9 +112,11 @@ class App
       @people.each_with_index do |person, i|
         puts "#{i + 1}) [#{person.class.name}] Name: #{person.name}|Age: #{person.age} |ID: #{person.id}"
       end
+      num = gets.chomp.to_i
+      id = num - 1
       print 'Enter the date [dd/mm/yyyy]:'
       date = gets.chomp
-      rental = Rental.new(date, @people[index], @books[index])
+      rental = Rental.new(date, @people[id], @books[index])
       @rentals.push(rental)
       puts 'Rental created successfully'
     end
