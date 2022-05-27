@@ -135,6 +135,7 @@ class App
       puts 'No rentals found'
     else
       rented.each do |rental|
+        puts
         puts "Rental date: #{rental.date}|Book: #{rental.book.title}|Person: #{rental.person.name}"
       end
     end
