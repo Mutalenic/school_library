@@ -101,14 +101,14 @@ class App
     if @books.empty? && @people.empty?
       puts 'No books and people in the library'
     else
-      puts 'Select a book:'
+      puts 'Select a book from the following list by number:'
       @books.each_with_index do |book, index|
         puts "#{index + 1}) Title: \"#{book.title}\"|Author: by #{book.author}"
       end
       number = gets.chomp.to_i
       index = number - 1
 
-      puts 'Type your ID:'
+      puts 'Select a person from the following list by number (not id):'
       @people.each { |person| puts "[#{person.class}] Name: #{person.name}|Age: #{person.age} | ID: #{person.id}" }
 
       print 'Enter the date [dd/mm/yyyy]:'
