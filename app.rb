@@ -109,30 +109,36 @@ class App
       index = number - 1
 
       puts 'Select a person from the following list by number (not id):'
-      @people.each { |person| puts "[#{person.class}] Name: #{person.name}|Age: #{person.age} | ID: #{person.id}" }
-
+      @people.each_with_index do |person, index|
+       puts "#{index + 1}) Name: #{person.name}|Age: #{person.age} | ID: #{person.id}" 
+      end
+      personNumber = gets.chomp.to_i
+      # personIndex = personNumber - 1
       print 'Enter the date [dd/mm/yyyy]:'
       date = gets.chomp
-      rental = Rental.new(@books[index], @people[number - 1], date)
+      rental = Rental.new(date, @people[index], @books[index])
       @rentals.push(rental)
       puts 'Rental created successfully'
     end
   end
 
   def list_all_rentals
-    puts 'No rentals in the library' if @rentals.empty?
+    if @rentals.empty?
+      puts 'No rentals in the library'
+      return
+    end
     print 'To view your rentals, type your ID:'
     id = gets.chomp.to_i
+
+  
     rental = @rentals.find { |rent| rent.person.id == id }
-    if rental.empty?
-      puts 'No rentals found'
-    else
-      puts 'Here are your rentals:'
-      rental.each_with_index do |record, index|
-        puts "#{index + 1}|Date: #{record.date}|
-                  Borrowerred by: #{record.person.name}| Status: #{record.person.class} |
-                  Book: #{record.book.title}\" by #{record.book.author}"
-      end
+    data = []
+    data.push("#{rental.person.name}'s rentals:")
+    data.push("Date: #{rental.date}")
+    data.push("Book: #{rental.book.title}")
+    data.push("Author: #{rental.book.author}")
+    data.each do |line|
+      puts line
     end
-  end
+  end  
 end
