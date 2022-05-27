@@ -1,4 +1,6 @@
 require_relative './nameable_class'
+require_relative './rental_class'
+require 'date'
 
 class Person < Nameable
   attr_accessor :name, :age
@@ -11,6 +13,7 @@ class Person < Nameable
     @age = age
     @parent_permission = parent_permission
     @rentals = []
+    @date = DateTime.now.to_s
   end
 
   def can_use_services?
@@ -21,8 +24,8 @@ class Person < Nameable
     @name
   end
 
-  def add_rental(date, book)
-    Rental.new(book, date, self)
+  def add_rental(name)
+    Rental.new(name, @date, self)
   end
 
   private

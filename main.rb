@@ -33,7 +33,7 @@ class Main
     when 5
       app.create_rental
     when 6
-      app.list_all_rentals_for_a_given_person_id
+      app.list_all_rentals
     when 7
       puts 'Goodbye!'
       exit

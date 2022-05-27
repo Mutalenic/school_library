@@ -35,45 +35,51 @@ class App
   def create_person
     print 'Do you want to create a student(1) or a teacher (2)?[Input a number]:'
     option = gets.chomp
-    print 'Name:'
-    name = gets.chomp
-    print 'Age:'
-    age = gets.chomp.to_i
     case option
-    when 1
-      print 'Class:'
-      person = gets.chomp
-      create_student(name, age, person)
-    when 2
-      print 'specialization:'
-      grade = gets.chomp
-      create_teacher(name, age, grade)
+    when '1'
+      create_student
+    when '2'
+      create_teacher
     else
       puts 'Invalid input'
     end
     puts 'Person created'
   end
 
-  def create_student(name, age, _grade)
-    print 'Parent permision?[Y/N]:'
-    option = gets.chomp.downcase
-    case option
+  def student_creation(age, name, parent_permission)
+    case parent_permission
     when 'y'
-      student = Student.new(age, name, parent_pernission: true)
+      student = Student.new(age, name, parent_permission: true)
     when 'n'
       student = Student.new(age, name, parent_permission: false)
     else
       puts 'Invalid input'
-      return
     end
     @people.push(student)
-    puts "Student created ID: #{student.id}"
   end
 
-  def create_teacher(name, age, specialization)
+  def create_student
+    puts 'Create a student'
+    print 'Enter student age:'
+    age = gets.chomp.to_i
+    print 'Enter student name:'
+    name = gets.chomp
+    print 'Has parent permission? [Y/N]:'
+    parent_permission = gets.chomp.downcase
+    student_creation(age, name, parent_permission)
+  end
+
+  def create_teacher
+    puts
+    puts 'Create a teacher'
+    print 'Enter teacher age:'
+    age = gets.chomp.to_i
+    print 'Enter teacher name:'
+    name = gets.chomp
+    print 'Enter teacher specialization:'
+    specialization = gets.chomp
     teacher = Teacher.new(age, name, specialization)
     @people.push(teacher)
-    puts "Teacher created ID: #{teacher.id}"
   end
 
   def create_book
@@ -104,13 +110,12 @@ class App
 
       puts 'Type your ID:'
       @people.each { |person| puts "[#{person.class}] Name: #{person.name}|Age: #{person.age} | ID: #{person.id}" }
-      id = gets.chomp.to_i
-      individual = @people.find { |person| person.id == id }.first
 
-      print 'Date:'
+      print 'Enter the date [dd/mm/yyyy]:'
       date = gets.chomp
-      @books[index].rentals.push(Rental.new(date, @books[index], individual))
-      puts 'Rental created'
+      rental = Rental.new(@books[index], @people[number - 1], date)
+      @rentals.push(rental)
+      puts 'Rental created successfully'
     end
   end
 
