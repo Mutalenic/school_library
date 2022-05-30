@@ -1,6 +1,6 @@
 require './book'
 
-class BOOKS
+class Books
     attr_accessor :books
     def initialize
         @books = []

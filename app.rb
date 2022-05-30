@@ -5,9 +5,10 @@ require_relative './teacher_class'
 require_relative './classroom_class'
 require_relative './people_class'
 require_relative 'rent_book'
+
 class App
   def initialize
-    @books = []
+    @books = Books.new
     @people = Peoplemodule.new
     @rentals = Rent_Book.new(@books, @people.people)
   end
@@ -51,10 +52,6 @@ class App
     else
       puts 'Invalid input'
     end
-  end
-
-  
-
-  
+  end  
   
 end
