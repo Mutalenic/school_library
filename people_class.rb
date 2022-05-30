@@ -1,4 +1,13 @@
-def list_people
+require_relative './person'
+
+class Peoplemodule
+    attr_accessor :people
+
+    def initialize
+        @people = []
+    end
+
+  def list_people
     if @people.empty?
       puts 'No people added'
     else
@@ -72,3 +81,4 @@ def list_people
       puts 'Enter a valid title and author'
     end
   end
+end
