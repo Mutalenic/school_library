@@ -10,7 +10,7 @@ class App
   def initialize
     @books = Books.new
     @people = Peoplemodule.new
-    @rentals = Rent_Book.new(@books, @people.people)
+    @rentals = RentBook.new(@books, @people)
   end
 
   def self.home_page
@@ -52,6 +52,5 @@ class App
     else
       puts 'Invalid input'
     end
-  end  
-  
+  end
 end

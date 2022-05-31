@@ -1,11 +1,11 @@
 require_relative './person'
 
 class Peoplemodule
-    attr_accessor :people
+  attr_accessor :people
 
-    def initialize
-        @people = []
-    end
+  def initialize
+    @people = []
+  end
 
   def list_people
     if @people.empty?
@@ -66,5 +66,4 @@ class Peoplemodule
     teacher = Teacher.new(age, name, specialization)
     @people.push(teacher)
   end
-
-  end
+end

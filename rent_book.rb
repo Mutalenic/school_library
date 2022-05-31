@@ -2,16 +2,16 @@ require_relative './rental_class'
 require_relative './people_class'
 require_relative './books_class'
 
-class Rent_Book
-    attr_accessor :rentals, :books, :people
+class RentBook
+  attr_accessor :rentals, :books, :people
 
-    def initialize(books, person)
-        @rentals = []
-        @books = books
-        @people = person
-    end
+  def initialize(books, person)
+    @rentals = []
+    @books = books
+    @people = person
+  end
 
-def create_rental
+  def create_rental
     if @books.empty? && @people.empty?
       puts 'No books and people in the library'
     else
