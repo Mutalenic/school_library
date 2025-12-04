@@ -1,0 +1,10 @@
+run = "ruby main.rb"
+language = "ruby"
+entrypoint = "main.rb"
+
+[nix]
+channel = "stable-24_05"
+
+[deployment]
+run = ["ruby", "main.rb"]
+deploymentTarget = "cloudrun"

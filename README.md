@@ -82,6 +82,10 @@ Please enter a number to select an option:
 
 Simply enter the number corresponding to your desired action and follow the prompts.
 
+### Live Demo
+
+You can try the live demo on Replit: [Coming Soon]
+
 ## Project Structure
 
 ```
@@ -136,3 +140,21 @@ Give a ⭐️ if you like this project!
 ## License
 
 This project is [MIT](./LICENSE) licensed.
+
+---
+
+## Deployment
+
+### Deploy to Replit
+
+This application is configured for easy deployment to Replit:
+
+1. Go to [Replit](https://replit.com)
+2. Click "Create Repl" → "Import from GitHub"
+3. Paste the repository URL: `https://github.com/Mutalenic/school_library`
+4. Click "Import from GitHub"
+5. Once imported, click "Run" to start the application
+6. Share your Repl link with others!
+
+The app will automatically use the `.replit` configuration file to run `ruby main.rb`.
+
